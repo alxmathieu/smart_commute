@@ -1,0 +1,9 @@
+<h1>Itineraries#new</h1>
+<p>Find me in app/views/itineraries/new.html.erb</p>
+
+<%= simple_form_for @itinerary do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.input :start_point %>
+  <%= f.input :end_point %>
+  <%= f.button :submit, "Submit" %>
+<% end %>
