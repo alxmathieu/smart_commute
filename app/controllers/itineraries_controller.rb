@@ -15,6 +15,10 @@ class ItinerariesController < ApplicationController
 
   private
 
+  def build_link_for_google
+
+  end
+
   def itinerary_params
     params.require(:itinerary).permit(:user_id, :start_point, :end_point, :duration)
   end
