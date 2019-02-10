@@ -18,6 +18,7 @@ class ItinerariesController < ApplicationController
 
   def show
     @itinerary = Itinerary.find(params[:id])
+    build_link_for_google(@itinerary)
   end
 
   private
@@ -27,6 +28,7 @@ class ItinerariesController < ApplicationController
     origin = itinerary.start_point.gsub(' ','+')
     destination = itinerary.end_point.gsub(' ','+')
     link = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=transit&key=#{api_key}"
+    raise
   end
 
   def itinerary_params

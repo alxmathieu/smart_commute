@@ -22,3 +22,5 @@ module SmartCommute
     # the framework and any gems in your application.
   end
 end
+
+Dotenv::Railtie.load
