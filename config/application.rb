@@ -23,4 +23,7 @@ module SmartCommute
   end
 end
 
-Dotenv::Railtie.load
+Bundler.require(*Rails.groups)
+if ['development', 'test'].include? ENV['RAILS_ENV']
+  Dotenv::Railtie.load
+end
