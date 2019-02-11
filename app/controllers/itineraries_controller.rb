@@ -12,7 +12,7 @@ class ItinerariesController < ApplicationController
     # create new itinerary
     @itinerary = Itinerary.new(itinerary_params)
     # retrieve duration and set duration
-    url = build_link_for_google(@itinerary)
+    url = build_google_maps_url(@itinerary)
     set_duration_for_itinerary(@itinerary, url)
     # save itinerary
     if @itinerary.save
@@ -24,14 +24,40 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     # Construire le lien pour l'api google
-    url = build_link_for_google(@itinerary)
+    url = build_google_maps_url(@itinerary)
     # Récupérer la data du json google et la duration
-    @duration = retrieve_duration_from_url(url)
+    @duration_text = retrieve_duration_from_url(url)
+    # Create 4 inspirations
+    @inspiration1 = Inspiration.new
+    @inspiration2 = Inspiration.new
+    @inspiration3 = Inspiration.new
+    @inspiration4 = Inspiration.new
+    # build ted url
+    ted_url = build_ted_url(@itinerary.duration)
+    raise
+
   end
 
   private
 
-  def build_link_for_google(itinerary)
+  def build_ted_url(itinerary_duration)
+    duration = itinerary_duration / 60
+
+
+    if duration <= 6
+      ted_duration = '0-6'
+    elsif duration > 6 && duration <= 12
+      ted_duration = '6-12'
+    elsif duration > 12 && duration <= 18
+      ted_duration = '12-18'
+    else
+      ted_duration = '18%2B'
+    end
+    ted_url = "https://www.ted.com/talks?sort=jaw-dropping&duration=#{ted_duration}"
+  end
+
+
+  def build_google_maps_url(itinerary)
     api_key = ENV['MAPS_API_KEY']
     # Pour supprimer les espaces et rendre le point de départ/arrivée url-compliant
     origin = itinerary.start_point.gsub(' ','+')
