@@ -7,4 +7,10 @@
 <%= @itinerary.end_point %>
 
 <h2>Duration</h2>
-<%= @duration %>
+<%= @duration_text %>
+
+<h2>Ted Videos</h2>
+<% @ted_talks.each_with_index do |video_link, index| %>
+<%= link_to "Video #{index+1}", video_link %> <br>
+
+<% end %>
