@@ -1,5 +1,5 @@
 class Itinerary < ApplicationRecord
-  has_many :inspirations
+  has_many :suggestions
   belongs_to :user
 
 end

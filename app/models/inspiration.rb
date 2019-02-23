@@ -1,4 +1,4 @@
 class Inspiration < ApplicationRecord
-  belongs_to :itinerary
+  has_many :suggestions
 
 end
