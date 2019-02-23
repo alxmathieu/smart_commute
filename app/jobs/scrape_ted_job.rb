@@ -1,8 +1,9 @@
 class ScrapeTedJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    # Do something later
+  def perform
+    Inspiration.new(type: 'video', source:'ted')
+
   end
 
   # build url pour durée 1
