@@ -42,13 +42,12 @@ class ItinerariesController < ApplicationController
 
   private
 
-  def set_duration_for_itinerary(itinerary, url)
-    data = JSON.parse(open(url).read)
-    routes = data["routes"].first
-    legs = routes["legs"].first
-    duration = legs["duration"]["value"]
-    itinerary.duration = duration
-    itinerary.save
+  def build_google_maps_url(itinerary)
+    api_key = ENV['MAPS_API_KEY']
+    # Pour supprimer les espaces et rendre le point de départ/arrivée url-compliant
+    origin = itinerary.start_point.gsub(' ','+')
+    destination = itinerary.end_point.gsub(' ','+')
+    url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=transit&key=#{api_key}"
   end
 
   def retrieve_duration_from_url(url)
@@ -58,41 +57,16 @@ class ItinerariesController < ApplicationController
     duration = legs["duration"]["text"]
   end
 
-  def build_google_maps_url(itinerary)
-    api_key = ENV['MAPS_API_KEY']
-    # Pour supprimer les espaces et rendre le point de départ/arrivée url-compliant
-    origin = itinerary.start_point.gsub(' ','+')
-    destination = itinerary.end_point.gsub(' ','+')
-    url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=transit&key=#{api_key}"
+  def set_duration_for_itinerary(itinerary, url)
+    data = JSON.parse(open(url).read)
+    routes = data["routes"].first
+    legs = routes["legs"].first
+    duration = legs["duration"]["value"]
+    itinerary.duration = duration
+    itinerary.save
   end
 
-  def build_ted_url(itinerary_duration)
-    duration = itinerary_duration / 60
-    if duration <= 6
-      ted_duration = '0-6'
-    elsif duration > 6 && duration <= 12
-      ted_duration = '6-12'
-    elsif duration > 12 && duration <= 18
-      ted_duration = '12-18'
-    else
-      ted_duration = '18%2B'
-    end
-    ted_url = "https://www.ted.com/talks?sort=jaw-dropping&duration=#{ted_duration}"
-  end
 
-  def scrape_ted_links(url)
-    html_file = open(url).read
-    html_doc = Nokogiri::HTML(html_file)
-
-    nodeset = html_doc.xpath('//a')
-    hrefs = nodeset.map {|element| element["href"]}.compact
-    hrefs.select! {|link| link.start_with?('/talks/')}
-    hrefs.uniq!
-  end
-
-  def ted_videos_urls(array)
-    array.map! {|link|"http://ted.com#{link}"}
-  end
 
 
 
