@@ -29,15 +29,9 @@ class ItinerariesController < ApplicationController
     url = build_google_maps_url(@itinerary)
     # Récupérer la data du json google et la duration
     @duration_text = retrieve_duration_from_url(url)
-    # Create 4 inspirations
-    @inspiration1 = Inspiration.new
-    @inspiration2 = Inspiration.new
-    @inspiration3 = Inspiration.new
-    @inspiration4 = Inspiration.new
-    inspirations = [@inspiration1, @inspiration2, @inspiration3, @inspiration4]
-    # build ted url
-    ted_url = build_ted_url(@itinerary.duration)
-    @ted_talks = scrape_ted_links(ted_url).map! {|link|"http://ted.com#{link}"}
+
+    @inspiration_first = Inspiration.all.sample
+    @inspiration_second = Inspiration.all.sample
   end
 
   private
@@ -65,8 +59,6 @@ class ItinerariesController < ApplicationController
     itinerary.duration = duration
     itinerary.save
   end
-
-
 
 
 
