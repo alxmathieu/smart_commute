@@ -1,0 +1,2 @@
+class InspirationsController < ApplicationController
+end

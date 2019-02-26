@@ -29,34 +29,12 @@ class ItinerariesController < ApplicationController
     url = build_google_maps_url(@itinerary)
     # Récupérer la data du json google et la duration
     @duration_text = retrieve_duration_from_url(url)
-    # Create 4 inspirations
-    @inspiration1 = Inspiration.new
-    @inspiration2 = Inspiration.new
-    @inspiration3 = Inspiration.new
-    @inspiration4 = Inspiration.new
-    inspirations = [@inspiration1, @inspiration2, @inspiration3, @inspiration4]
-    # build ted url
-    ted_url = build_ted_url(@itinerary.duration)
-    @ted_talks = scrape_ted_links(ted_url).map! {|link|"http://ted.com#{link}"}
+
+    @inspiration_first = Inspiration.all.sample
+    @inspiration_second = Inspiration.all.sample
   end
 
   private
-
-  def set_duration_for_itinerary(itinerary, url)
-    data = JSON.parse(open(url).read)
-    routes = data["routes"].first
-    legs = routes["legs"].first
-    duration = legs["duration"]["value"]
-    itinerary.duration = duration
-    itinerary.save
-  end
-
-  def retrieve_duration_from_url(url)
-    data = JSON.parse(open(url).read)
-    routes = data["routes"].first
-    legs = routes["legs"].first
-    duration = legs["duration"]["text"]
-  end
 
   def build_google_maps_url(itinerary)
     api_key = ENV['MAPS_API_KEY']
@@ -66,32 +44,20 @@ class ItinerariesController < ApplicationController
     url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=transit&key=#{api_key}"
   end
 
-  def build_ted_url(itinerary_duration)
-    duration = itinerary_duration / 60
-    if duration <= 6
-      ted_duration = '0-6'
-    elsif duration > 6 && duration <= 12
-      ted_duration = '6-12'
-    elsif duration > 12 && duration <= 18
-      ted_duration = '12-18'
-    else
-      ted_duration = '18%2B'
-    end
-    ted_url = "https://www.ted.com/talks?sort=jaw-dropping&duration=#{ted_duration}"
+  def retrieve_duration_from_url(url)
+    data = JSON.parse(open(url).read)
+    routes = data["routes"].first
+    legs = routes["legs"].first
+    duration = legs["duration"]["text"]
   end
 
-  def scrape_ted_links(url)
-    html_file = open(url).read
-    html_doc = Nokogiri::HTML(html_file)
-
-    nodeset = html_doc.xpath('//a')
-    hrefs = nodeset.map {|element| element["href"]}.compact
-    hrefs.select! {|link| link.start_with?('/talks/')}
-    hrefs.uniq!
-  end
-
-  def ted_videos_urls(array)
-    array.map! {|link|"http://ted.com#{link}"}
+  def set_duration_for_itinerary(itinerary, url)
+    data = JSON.parse(open(url).read)
+    routes = data["routes"].first
+    legs = routes["legs"].first
+    duration = legs["duration"]["value"]
+    itinerary.duration = duration
+    itinerary.save
   end
 
 
