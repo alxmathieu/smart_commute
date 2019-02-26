@@ -19,6 +19,19 @@ class ScrapeTedJob < ApplicationJob
     end
   end
 
+  def inspiration_already_exists?(inspiration)
+    all_inspirations = Inspiration.all
+    result = false
+    unless all_inspirations.empty?
+        all_inspirations.each do |existing_inspiration|
+          if existing_inspiration.name == inspiration.name
+            result = true
+            break
+          end
+        end
+    end
+    result
+  end
 
   def scrape_ted_names(url)
     html_file = open(url).read
@@ -27,17 +40,15 @@ class ScrapeTedJob < ApplicationJob
       video_duration = element.search('.thumb__duration').text.strip
       video_name = element.search('.h9.m5 a').text.strip
       video_link = "http://ted.com#{element.search('.h9.m5 a').attribute('href').value}"
-      Inspiration.create(
+      new_inspiration = Inspiration.new(
         inspiration_type: 'video',
         source: 'ted',
         duration: video_duration,
         name: video_name,
         url: video_link
         )
+      new_inspiration.save unless inspiration_already_exists?(new_inspiration)
     end
-# pas du tout de check de "est-ce que ca existe" pour les inspirations, il faut checker si le nom est déjà pris.
-# -> ajouter des validations sur les modèles
-
   end
 
 
