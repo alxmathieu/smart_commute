@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ForestLiana::Engine => '/forest'
   resources :itineraries
   devise_for :users
   root to: 'pages#home'
