@@ -13,9 +13,12 @@ class ScrapeTedJob < ApplicationJob
 
   def create_ted_inspirations
     duration = ['0-6', '6-12', '12-18', "18%2B"]
+    pages = [1, 2, 3]
     duration.each do |interval|
-      ted_url = "https://www.ted.com/talks?sort=jaw-dropping&duration=#{interval}"
-      scrape_ted_names(ted_url)
+      pages.each do |page|
+        ted_url = "https://www.ted.com/talks?sort=popular&duration=#{interval}&page=#{page}"
+        scrape_ted_names(ted_url)
+      end
     end
   end
 
