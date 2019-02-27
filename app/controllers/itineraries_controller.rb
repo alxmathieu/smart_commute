@@ -9,8 +9,9 @@ class ItinerariesController < ApplicationController
 
   def create
     # destroy last itinerary for the user
-    @last_itinerary = Itinerary.where(user_id: itinerary_params["user_id"]).last
-    Itinerary.destroy(@last_itinerary.id) unless @last_itinerary.nil?
+    # @last_itinerary = Itinerary.where(user_id: itinerary_params["user_id"]).last
+    # Itinerary.destroy(@last_itinerary.id) unless @last_itinerary.nil?
+
     # create new itinerary
     @itinerary = Itinerary.new(itinerary_params)
     # retrieve duration and set duration
