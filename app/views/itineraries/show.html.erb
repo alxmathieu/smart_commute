@@ -11,7 +11,11 @@
 
 <h2>Ted Videos</h2>
 
-<%= link_to @inspiration_first.name, @inspiration_first.url  %>
-<%= @inspiration_first.duration + 1 %> min
+<%#= link_to @inspiration_first.name, @inspiration_first.url  %>
+<%#= @inspiration_first.duration + 1 %>
 
-
+<% @suggestions.each do |suggestion| %>
+<%= link_to suggestion.inspiration.name, suggestion.inspiration.url   %>
+<%= suggestion.inspiration.duration %> min
+<br>
+<% end %>
