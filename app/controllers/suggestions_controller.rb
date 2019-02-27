@@ -1,0 +1,3 @@
+class SuggestionsController < ApplicationController
+
+end

@@ -25,13 +25,25 @@ class ItinerariesController < ApplicationController
 
   def show
     @itinerary = Itinerary.find(params[:id])
-    # Construire le lien pour l'api google
-    url = build_google_maps_url(@itinerary)
-    # Récupérer la data du json google et la duration
-    @duration_text = retrieve_duration_from_url(url)
+    @duration_text = @itinerary.duration_in_minutes
+    # Récupérer toutes les inspirations qui durent same duration
+    eligible_inspirations = Inspiration.all.select {|inspiration|
+      inspiration.duration < @duration_text  &&
+      inspiration.duration > @duration_text - 5
+    }
+    # N'en prendre que 4 et les passer à la vue
+    if eligible_inspirations.count < 4
+      elected_inspirations = eligible_inspirations
+    else
+      elected_inspirations = Inspiration.all.sample(4)
+    end
 
-    @inspiration_first = Inspiration.all.sample
-    @inspiration_second = Inspiration.all.sample
+    @suggestions = elected_inspirations.map{|elected_inspiration|
+      Suggestion.create(
+        inspiration: elected_inspiration,
+        itinerary: @itinerary
+        )
+    }
   end
 
   private

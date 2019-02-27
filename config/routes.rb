@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount ForestLiana::Engine => '/forest'
-  resources :itineraries
+  resources :itineraries # à retravailler pour n'avoir que les routes nécessaires
   devise_for :users
   root to: 'pages#home'
 
