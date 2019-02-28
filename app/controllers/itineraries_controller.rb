@@ -30,13 +30,13 @@ class ItinerariesController < ApplicationController
     # Récupérer toutes les inspirations qui durent same duration
     eligible_inspirations = Inspiration.all.select {|inspiration|
       inspiration.duration < @duration_text  &&
-      inspiration.duration > @duration_text - 5
+      inspiration.duration > @duration_text / 2
     }
     # N'en prendre que 4 et les passer à la vue
     if eligible_inspirations.count < 4
       elected_inspirations = eligible_inspirations
     else
-      elected_inspirations = Inspiration.all.sample(4)
+      elected_inspirations = eligible_inspirations.sample(4)
     end
 
     @suggestions = elected_inspirations.map{|elected_inspiration|
@@ -45,6 +45,7 @@ class ItinerariesController < ApplicationController
         itinerary: @itinerary
         )
     }
+
 
     # pb, on crée à chaque fois les suggestions. On ne va pas encore récupérer les suggestions qui
     # existent déjà mais n'ont pas été vues (avec le status)
