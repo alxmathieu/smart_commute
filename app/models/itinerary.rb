@@ -1,5 +1,6 @@
 class Itinerary < ApplicationRecord
   has_many :suggestions
+  has_many :inspirations, through: :suggestions
   belongs_to :user
 
   validates :start_point , presence: true
