@@ -42,7 +42,7 @@ class ItinerariesController < ApplicationController
     @suggestions = elected_inspirations.map{|elected_inspiration|
       Suggestion.create(
         inspiration: elected_inspiration,
-        itinerary: @itinerary
+        itinerary: @itinerary,
         status: 'suggested'
         )
     }
