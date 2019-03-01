@@ -43,9 +43,9 @@ class ItinerariesController < ApplicationController
       Suggestion.create(
         inspiration: elected_inspiration,
         itinerary: @itinerary
+        status: 'suggested'
         )
     }
-
 
     # pb, on crée à chaque fois les suggestions. On ne va pas encore récupérer les suggestions qui
     # existent déjà mais n'ont pas été vues (avec le status)
