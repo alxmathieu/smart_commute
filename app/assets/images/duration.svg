@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#3C63FF;}
+	.st1{fill:#F7602B;}
+	.st2{fill:#00AD88;}
+	.st3{fill:#142433;}
+	.st4{fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:10;}
+</style>
+<g>
+	<g>
+		<circle class="st0" cx="227.4" cy="172.3" r="170.1"/>
+		<path class="st1" d="M57,177.8h170V2.4C131.3,2.4,54.1,81.4,57,177.8L57,177.8z"/>
+		<path class="st2" d="M177.6,65.6c-3.3,0-5.8,2.7-5.8,5.8v135h-88c-3.3,0-5.8,2.7-5.8,5.8c0,3.3,2.7,5.8,5.8,5.8h93.9
+			c3.3,0,5.8-2.7,5.8-5.8V71.5C183.5,68.3,180.9,65.6,177.6,65.6z"/>
+		<path class="st3" d="M177.6,53.9c-3.3,0-5.8,2.7-5.8,5.8v135h-88c-3.3,0-5.8,2.7-5.8,5.8c0,3.2,2.7,5.8,5.8,5.8h93.9
+			c3.3,0,5.8-2.7,5.8-5.8V59.7C183.5,56.5,180.9,53.9,177.6,53.9z"/>
+	</g>
+	<circle class="st4" cx="178.6" cy="195.5" r="170.1"/>
+</g>
+</svg>

@@ -56,4 +56,8 @@ $border-radius-small: 10px;
 
 // Override other variables below!
 
-
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+    color: #fff;
+    background-color: $orange !important;
+    border-color: $orange; /*set the color you want here*/
+}
