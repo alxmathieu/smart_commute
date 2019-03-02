@@ -4,36 +4,35 @@
       <div class="home-title">
         <h1>Sick of losing time during your commute?</h1>
       </div>
-      <div class="home-tips ">
-        <div class="card-home home-commute">
-          <div class="icon-home commute">
-            <%= image_tag "train_style2.svg" %>
+      <div class="row home-tips">
+        <!-- <div class=""> -->
+          <div class="card-home home-commute col-md-4 col-xs 12">
+            <div class="icon-home commute">
+              <%= image_tag "train_style2.svg" %>
+            </div>
+            <div class="tip-home commute">
+              <h3>Spending more than 60 minutes in <span class="emphasis">commute everyday</span>?</h3>
+            </div>
           </div>
-          <div class="tip-home commute">
-            Spending more than 60 minutes in commute everyday?
+          <div class="card-home home-time col-md-4 col-xs 12">
+            <div class="icon-home value">
+              <%= image_tag "value.svg" %>
+            </div>
+            <div class="tip-home value">
+              <h3>Get <span class="emphasis">quality content</span>...</h3>
+            </div>
           </div>
-        </div>
-
-        <div class="card-home home-content">
-          <div class="icon-home content">
-            <%= image_tag "value.svg" %>
+          <div class="card-home home-time col-md-4 col-xs 12">
+            <div class="icon-home time">
+              <%= image_tag "time.svg" %>
+            </div>
+            <div class="tip-home time">
+              <h3>...<span class="emphasis">adapted to the length</span> of your trip!</h3>
+            </div>
           </div>
-          <div class="tip-home content">
-            Get quality content ...
-          </div>
-        </div>
-
-        <div class="card-home home-time">
-          <div class="icon-home time">
-            <%= image_tag "time.svg" %>
-          </div>
-          <div class="tip-home time">
-            ... Adapted to the length of your trip!
-          </div>
-        </div>
-
+        <!-- </div> -->
       </div>
-      <%= link_to "New itinerary", new_itinerary_path, class:'btn btn-success' %>
+      <%= link_to "Join Smart-commute", new_itinerary_path, class:'btn btn-success home-btn' %>
     </div>
   </div>
 </div>

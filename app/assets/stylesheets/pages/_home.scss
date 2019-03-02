@@ -1,8 +1,5 @@
 // Specific CSS for your home-page
-.home-content{
-  display: flex;
-  flex-direction: column;
-}
+
 
 .background-image{
     //background-image: url(background.1c020ed1.svg);
@@ -16,9 +13,13 @@
   background-size: cover;
 }
 
+.home-content{
+  display: flex;
+  flex-direction: column;
+}
 
 .home-tips{
-  display: flex;
+  //display: flex;
   justify-content: space-between;
   margin-bottom: 60px;
   padding-bottom: 50px;
