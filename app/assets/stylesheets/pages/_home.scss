@@ -19,20 +19,31 @@
 
 .home-tips{
   display: flex;
-  flex-direction: row;
-  margin: 70px;
-  padding: 40px;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-bottom: 50px;
   background-color: $yellow;
   color: $navy-blue;
   border-radius: 10px;
 }
 
+img{
+  margin:0px;
+}
 
 .icon-home{
-  height: 330px;
   width: 350px;
+  align-items: center;
 }
 
 .tip-home{
   text-align: center;
+}
+
+.card-home{
+justify-content: center;
+}
+
+.commute{
+  margin-left: 50px;
 }
