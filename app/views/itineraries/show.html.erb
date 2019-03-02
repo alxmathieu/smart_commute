@@ -15,7 +15,7 @@
 <%#= @inspiration_first.duration + 1 %>
 
 <% @suggestions.each do |suggestion| %>
-<%= link_to suggestion.inspiration.name, suggestion.inspiration.url   %>
+<%= link_to suggestion.inspiration.name, suggestion.inspiration.url, target: "_blank"   %>
 <%= suggestion.inspiration.duration %> min
 <br>
 <% end %>

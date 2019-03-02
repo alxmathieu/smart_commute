@@ -1,1 +1,38 @@
 // Specific CSS for your home-page
+.home-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.background-image{
+    //background-image: url(background.1c020ed1.svg);
+    //background-repeat: no-repeat;
+    //background-size: cover;
+
+    background: url(background.1c020ed1.svg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.home-tips{
+  display: flex;
+  flex-direction: row;
+  margin: 70px;
+  padding: 40px;
+  background-color: $yellow;
+  color: $navy-blue;
+  border-radius: 10px;
+}
+
+
+.icon-home{
+  height: 330px;
+  width: 350px;
+}
+
+.tip-home{
+  text-align: center;
+}
