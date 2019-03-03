@@ -4,7 +4,47 @@ color: $light-gray;
 
 }
 
+.itinerary-title{
+  text-align: center;
+  margin: 30px 0 70px 0;
+}
+
+.icon-itinerary{
+  max-width: 100px;
+}
+
+#new_itinerary{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
 .itinerary-form-input{
   display: flex;
-  flex-direction:row;
+  align-items: center;
+  width: 700px;
+}
+
+
+.simple_form input[type='submit']{
+  margin: 0;
+}
+
+
+.form-control{
+  margin: 0 0 0 15px;
+}
+
+
+.emphasis-title{
+  box-shadow: inset 0px -19px 0px 0px rgba(0, 173, 136, 0.8);
+}
+
+@media screen and (max-width: 1000px) {
+
+.itinerary-form-input{
+  width: 290px;
+}
+
+
 }
