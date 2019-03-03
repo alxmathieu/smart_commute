@@ -4,7 +4,45 @@ color: $light-gray;
 
 }
 
+.itinerary-title{
+  text-align: center;
+  margin: 30px 0 70px 0;
+}
+
+.icon-itinerary{
+  max-width: 100px;
+}
+
+#new_itinerary{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
 .itinerary-form-input{
   display: flex;
-  flex-direction:row;
+  align-items: center;
+  width: 700px;
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+
+.itinerary-form-input{
+  width: 500px;
+}
+
+
+}
+
+@media screen and (max-width: 500px) {
+
+.itinerary-form-input{
+  width: 350px;
+}
+
+
 }
