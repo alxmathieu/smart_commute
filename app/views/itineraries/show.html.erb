@@ -1,21 +1,74 @@
-<h1>Itinerary#show</h1>
+<div class="container">
+  <div class="itinerary-show-title">
+    <h1><span class='emphasis-title-orange'>Discover</span> amazing stuff</h1>
+  </div>
+  <div class="itinerary-sumup">
+    <div class="itinerary-origin">
+      <div class="itinerary-icon">
 
-<h2>From</h2>
-<%=@itinerary.start_point %>
+      </div>
+      <div class="itinerary-step">
+        <%=@itinerary.start_point %>
+      </div>
+    </div>
 
-<h2>to</h2>
-<%= @itinerary.end_point %>
+    <div class="itinerary-destination">
+      <div class="itinerary-icon">
 
-<h2>Duration</h2>
-<%= @duration_text %>
+      </div>
+      <div class="itinerary-step">
+        <%= @itinerary.end_point %>
+      </div>
+    </div>
 
-<h2>Ted Videos</h2>
+    <div class="itinerary-duration">
+      <div class="itinerary-icon">
 
-<%#= link_to @inspiration_first.name, @inspiration_first.url  %>
-<%#= @inspiration_first.duration + 1 %>
+      </div>
+      <div class="itinerary-step">
+        <%= @duration_text %>
+      </div>
+    </div>
 
-<% @suggestions.each do |suggestion| %>
-<%= link_to suggestion.inspiration.name, suggestion.inspiration.url, target: "_blank"   %>
-<%= suggestion.inspiration.duration %> min
-<br>
-<% end %>
+
+  </div>
+
+
+
+
+
+  <div class="suggestions">
+    <div class="suggestion-title">
+
+    </div>
+    <div class="suggestions-results">
+
+    </div>
+  </div>
+
+  <% @suggestions.each do |suggestion| %>
+  <%= link_to suggestion.inspiration.name, suggestion.inspiration.url, target: "_blank"   %>
+  <%= suggestion.inspiration.duration %> min
+
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

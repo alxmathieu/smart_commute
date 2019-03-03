@@ -26,24 +26,22 @@ color: $light-gray;
 }
 
 
-.simple_form input[type='submit']{
-  margin: 0;
-}
 
 
-.form-control{
-  margin: 0 0 0 15px;
-}
-
-
-.emphasis-title{
-  box-shadow: inset 0px -19px 0px 0px rgba(0, 173, 136, 0.8);
-}
 
 @media screen and (max-width: 1000px) {
 
 .itinerary-form-input{
-  width: 290px;
+  width: 500px;
+}
+
+
+}
+
+@media screen and (max-width: 500px) {
+
+.itinerary-form-input{
+  width: 350px;
 }
 
 
