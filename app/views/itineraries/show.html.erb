@@ -3,28 +3,22 @@
     <h1><span class='emphasis-title-green'>Discover</span> amazing stuff</h1>
   </div>
   <div class="itinerary-sumup">
-    <div class="itinerary-origin">
-      <div class="itinerary-icon">
-
-      </div>
+    <div class="itinerary-card origin">
+        <%= image_tag "location_here.svg", class:"icon-itinerary" %>
       <div class="itinerary-step">
         <%=@itinerary.start_point %>
       </div>
     </div>
 
-    <div class="itinerary-destination">
-      <div class="itinerary-icon">
-
-      </div>
+    <div class="itinerary-card destination">
+        <%= image_tag "destination.svg", class:"icon-itinerary" %>
       <div class="itinerary-step">
         <%= @itinerary.end_point %>
       </div>
     </div>
 
-    <div class="itinerary-duration">
-      <div class="itinerary-icon">
-
-      </div>
+    <div class="itinerary-card duration">
+        <%= image_tag "duration.svg", class:"icon-itinerary" %>
       <div class="itinerary-step">
         <%= @itinerary.duration_in_minutes %> min
       </div>
@@ -47,9 +41,10 @@
   </div>
 
   <% @suggestions.each do |suggestion| %>
-  <%= link_to suggestion.inspiration.name, suggestion.inspiration.url, target: "_blank"   %>
-  <%= suggestion.inspiration.duration %> min
-
+    <% unless suggestion.nil? %>
+      <%= link_to suggestion.inspiration.name, suggestion.inspiration.url, target: "_blank"   %>
+      <%= suggestion.inspiration.duration %> min
+    <% end %>
   <% end %>
 
 
