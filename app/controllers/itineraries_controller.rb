@@ -39,11 +39,20 @@ class ItinerariesController < ApplicationController
     end
 
     @suggestions = elected_inspirations.map{|elected_inspiration|
-      Suggestion.create(
-        inspiration: elected_inspiration,
-        itinerary: @itinerary,
-        status: 'suggested'
-        )
+      if current_user.already_suggested_inspirations.include?(elected_inspiration)
+        all_itineraries_for_current_user = Itinerary.where(user: current_user)
+        Suggestion.where(
+          inspiration: elected_inspiration,
+          itinerary: all_itineraries_for_current_user,
+          status: "suggested"
+        ).first
+      else
+        Suggestion.create(
+          inspiration: elected_inspiration,
+          itinerary: @itinerary,
+          status: 'suggested'
+          )
+      end
     }
 
     # pb, on crée à chaque fois les suggestions. On ne va pas encore récupérer les suggestions qui
