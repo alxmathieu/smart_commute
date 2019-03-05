@@ -47,7 +47,7 @@ GEM
     arel (9.0.0)
     arel-helpers (2.8.0)
       activerecord (>= 3.1.0, < 6)
-    autoprefixer-rails (9.4.9)
+    autoprefixer-rails (9.4.10)
       execjs
     base32 (0.3.2)
     bcrypt (3.1.12)
