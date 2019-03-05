@@ -1,30 +1,24 @@
 <div class="container">
   <div class="itinerary-show-title">
-    <h1><span class='emphasis-title-green'>Discover</span> amazing stuff</h1>
+    <h1>Make the <span class='emphasis-title-green'>most</span> out of your commute</h1>
   </div>
   <div class="itinerary-sumup">
-    <div class="itinerary-origin">
-      <div class="itinerary-icon">
-
-      </div>
+    <div class="itinerary-card origin">
+        <%= image_tag "location_here.svg", class:"icon-itinerary" %>
       <div class="itinerary-step">
         <%=@itinerary.start_point %>
       </div>
     </div>
 
-    <div class="itinerary-destination">
-      <div class="itinerary-icon">
-
-      </div>
+    <div class="itinerary-card destination">
+        <%= image_tag "destination.svg", class:"icon-itinerary" %>
       <div class="itinerary-step">
         <%= @itinerary.end_point %>
       </div>
     </div>
 
-    <div class="itinerary-duration">
-      <div class="itinerary-icon">
-
-      </div>
+    <div class="itinerary-card duration">
+        <%= image_tag "duration_white.svg", class:"icon-itinerary" %>
       <div class="itinerary-step">
         <%= @itinerary.duration_in_minutes %> min
       </div>
@@ -38,37 +32,28 @@
 
 
   <div class="suggestions">
-    <div class="suggestion-title">
-
-    </div>
-    <div class="suggestions-results">
-
+    <!-- <div class="suggestion-title">
+      <h2><span class='emphasis-title-green'>Discover</span> amazing stuff</h2>
+    </div> -->
+    <div class="suggestions-results ">
+      <div class="row">
+        <% @suggestions.each_with_index do |suggestion, index| %>
+          <% unless suggestion.nil? %>
+            <div class="col-xs-12 col-sm-3" >
+              <%= link_to suggestion.inspiration.url, target: "_blank" do %>
+                <div class="card-suggestion">
+                  <%= suggestion.inspiration.name %> <br>
+                  <span class="duration"><%= suggestion.inspiration.duration %> min</span>
+                  <span class="source">From <%= suggestion.inspiration.source %></span>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 
-  <% @suggestions.each do |suggestion| %>
-  <%= link_to suggestion.inspiration.name, suggestion.inspiration.url, target: "_blank"   %>
-  <%= suggestion.inspiration.duration %> min
-
-  <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
+
+
