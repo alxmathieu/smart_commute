@@ -61,3 +61,29 @@ $border-radius-small: 10px;
     background-color: $orange !important;
     border-color: $orange; /*set the color you want here*/
 }
+
+a:link{
+  color: $light-gray;
+  font-weight: bolder;
+  text-align: center;
+}
+
+a:hover{
+  text-decoration: underline;
+  color: $light-gray;
+  text-decoration: none;
+}
+
+a:visited{
+  font-style: italic !important;
+  color: $light-gray;
+}
+
+
+
+
+
+
+
+
+
