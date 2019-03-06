@@ -62,21 +62,33 @@ $border-radius-small: 10px;
     border-color: $orange; /*set the color you want here*/
 }
 
-a:link{
+
+
+a{
   color: $light-gray;
   font-weight: bolder;
   text-align: center;
+  &:link{
+    color: $light-gray;
+    font-weight: bolder;
+    text-align: center;
+  }
 }
 
 a:hover{
-  text-decoration: underline;
-  color: $light-gray;
-  text-decoration: none;
+  color: $light-gray !important;
+  text-decoration: none !important;
 }
 
 a:visited{
   font-style: italic !important;
-  color: $light-gray;
+  color: $light-gray !important;
+}
+
+a:focus{
+  font-style: italic !important;
+  color: $light-gray !important;
+  text-decoration: none !important;
 }
 
 
