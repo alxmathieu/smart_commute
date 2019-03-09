@@ -68,14 +68,16 @@ class ItinerariesController < ApplicationController
   end
 
   def retrieve_duration_from_url(url)
-    data = JSON.parse(open(url).read)
+    ascii_url = URI.escape(url)
+    data = JSON.parse(open(ascii_url).read)
     routes = data["routes"].first
     legs = routes["legs"].first
     duration = legs["duration"]["text"]
   end
 
   def set_duration_for_itinerary(itinerary, url)
-    data = JSON.parse(open(url).read)
+    ascii_url = URI.escape(url)
+    data = JSON.parse(open(ascii_url).read)
     routes = data["routes"].first
     legs = routes["legs"].first
     duration = legs["duration"]["value"]
