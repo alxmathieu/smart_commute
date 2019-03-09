@@ -1,3 +1,4 @@
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['MAPS_API_KEY']}" %>
 <div class="container">
   <div class="itinerary-title">
     <h1>Make the <span class='emphasis-title-green'>most</span> out of your commute</h1>
@@ -12,7 +13,7 @@
       </div>
       <div class="itinerary-form-input end-point">
         <%= image_tag "destination.svg", class:"icon-itinerary" %>
-        <%= f.input :end_point,wrapper: false, placeholder: "Where are you going?", class:"input" %>
+        <%= f.input :end_point,wrapper: false, placeholder: "Where are you going?", class:"input"%>
       </div>
     </div>
     <div>
