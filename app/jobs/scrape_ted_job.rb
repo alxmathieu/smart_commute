@@ -28,7 +28,7 @@ class ScrapeTedJob < ApplicationJob
       video_link = "http://ted.com#{element.search('.h9.m5 a').attribute('href').value}"
       Inspiration.create(
         inspiration_type: 'video',
-        source: 'ted',
+        source: 'Ted',
         duration: video_duration + 1, # to round to higher minute
         name: video_name,
         url: video_link
