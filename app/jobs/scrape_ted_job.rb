@@ -37,8 +37,8 @@ class ScrapeTedJob < ApplicationJob
   end
 
 
-  def build_ted_videos_urls(array)
-    array.map! {|link|"http://ted.com#{link}"}
-  end
+  # def build_ted_videos_urls(array)
+  #   array.map! {|link|"http://ted.com#{link}"}
+  # end
 
 end
