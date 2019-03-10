@@ -28,7 +28,7 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.find(params[:id])
     # Récupérer toutes les inspirations qui durent same duration
     eligible_inspirations = Inspiration.all.select {|inspiration|
-      inspiration.duration < @itinerary.duration_in_minutes  - 5 &&
+      inspiration.duration < @itinerary.duration_in_minutes  &&
       inspiration.duration > @itinerary.duration_in_minutes / 2
     }
     # N'en prendre que 4 et les passer à la vue
