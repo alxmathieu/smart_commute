@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 
+
 class ScrapeBoomerangJob < ApplicationJob
   queue_as :default
 
@@ -20,7 +21,7 @@ class ScrapeBoomerangJob < ApplicationJob
   def scrape_boomerang_names(url)
     html_file = open(url).read
     html_doc = Nokogiri::HTML(html_file)
-    html_doc.xpath('//div[@class="rich-section-list-item-content-show"]/header/div/a').each_with_index do |podcast, index|
+    html_doc.xpath('//div[@class="rich-section-list-item-content-show"]/header/div/a').each do |podcast|
       podcast_name = podcast.attributes["title"].value
       podcast_link = podcast.attributes["href"].value
       Inspiration.create(

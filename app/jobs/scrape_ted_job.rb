@@ -23,12 +23,12 @@ class ScrapeTedJob < ApplicationJob
     html_file = open(url).read
     html_doc = Nokogiri::HTML(html_file)
     html_doc.search('.talk-link').each do |element|
-      video_duration = element.search('.thumb__duration').text.strip
+      video_duration = element.search('.thumb__duration').text.strip.to_i
       video_name = element.search('.h9.m5 a').text.strip
       video_link = "http://ted.com#{element.search('.h9.m5 a').attribute('href').value}"
       Inspiration.create(
         inspiration_type: 'video',
-        source: 'ted',
+        source: 'Ted',
         duration: video_duration + 1, # to round to higher minute
         name: video_name,
         url: video_link
