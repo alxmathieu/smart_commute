@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 
+
 class ScrapeBoomerangJob < ApplicationJob
   queue_as :default
 
