@@ -18,8 +18,8 @@ class ItinerariesController < ApplicationController
       @itinerary.save
       redirect_to itinerary_path(@itinerary)
     elsif @itinerary.start_point == "" || @itinerary.end_point == ""
+      flash[:alert] = 'Please enter start & end points or duration'
       render :new
-      flash[:alert]
     else
       url = build_google_maps_url(@itinerary)
       set_duration_for_itinerary(@itinerary, url)
