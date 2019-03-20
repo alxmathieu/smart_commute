@@ -11,16 +11,27 @@ class ItinerariesController < ApplicationController
     # destroy last itinerary for the user
     # @last_itinerary = Itinerary.where(user_id: itinerary_params["user_id"]).last
     # Itinerary.destroy(@last_itinerary.id) unless @last_itinerary.nil?
-
     # create new itinerary
     @itinerary = Itinerary.new(itinerary_params)
     # retrieve duration and set duration
-    url = build_google_maps_url(@itinerary)
-    set_duration_for_itinerary(@itinerary, url)
-    # save itinerary
-    if @itinerary.save
+    if @itinerary.duration
+      @itinerary.save
+      redirect_to itinerary_path(@itinerary)
+    elsif @itinerary.start_point == "" || @itinerary.end_point == ""
+      render :new
+      flash[:alert]
+    else
+      url = build_google_maps_url(@itinerary)
+      set_duration_for_itinerary(@itinerary, url)
+      @itinerary.save
       redirect_to itinerary_path(@itinerary)
     end
+    # save itinerary
+    # if @itinerary.save
+    #   redirect_to itinerary_path(@itinerary)
+    # else
+    #   render :new
+    # end
 
   end
 
@@ -28,8 +39,8 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.find(params[:id])
     # Récupérer toutes les inspirations qui durent same duration
     eligible_inspirations = Inspiration.all.select {|inspiration|
-      inspiration.duration < @itinerary.duration_in_minutes  &&
-      inspiration.duration > @itinerary.duration_in_minutes / 2
+      inspiration.duration < @itinerary.duration  &&
+      inspiration.duration > @itinerary.duration / 2
     }
     # N'en prendre que 4 et les passer à la vue
     if eligible_inspirations.count < 4
@@ -37,7 +48,6 @@ class ItinerariesController < ApplicationController
     else
       elected_inspirations = eligible_inspirations.sample(4)
     end
-
     @suggestions = elected_inspirations.map{|elected_inspiration|
       if current_user.already_suggested_inspirations.include?(elected_inspiration)
         all_itineraries_for_current_user = Itinerary.where(user: current_user)
@@ -81,7 +91,7 @@ class ItinerariesController < ApplicationController
     routes = data["routes"].first
     legs = routes["legs"].first
     duration = legs["duration"]["value"]
-    itinerary.duration = duration
+    itinerary.duration = duration / 60
     itinerary.save
   end
 
