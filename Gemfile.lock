@@ -77,7 +77,7 @@ GEM
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.10.0)
-    font-awesome-sass (5.6.1)
+    font-awesome-sass (5.8.0)
       sassc (>= 1.11)
     forest_liana (2.15.8)
       arel-helpers
@@ -251,7 +251,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3)
   devise
   dotenv-rails
-  font-awesome-sass (~> 5.6.1)
+  font-awesome-sass (~> 5.8.0)
   forest_liana
   geocoder
   jbuilder (~> 2.0)
