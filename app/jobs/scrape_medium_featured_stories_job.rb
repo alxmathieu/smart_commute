@@ -24,11 +24,11 @@ class ScrapeMediumFeaturedStoriesJob < ApplicationJob
     # html_doc = Nokogiri::HTML.parse(browser.html)
 
 
-    html_doc.xpath("//div[contains(concat(' ',normalize-space(@class)), 'l el q s em bz en eo ep v')]").each do |card|
+    html_doc.xpath("//div[contains(concat(' ',normalize-space(@class)), 'l er q s es bz et eu ev v')]").each do |card|
       #ai y cl bj cm bk dq ez fa ak an ds cr gk gl
-      article_name = card.search('.ai.y.ce.at.cf.au.dj.er.es.ak.an.dl.ck.cl.cm').first.children.first.children.text unless card.search('.ai.y.ce.at.cf.au.dj.er.es.ak.an.dl.ck.cl.cm').empty?
-      article_link = card.xpath(".//div[contains(concat(' ',normalize-space(@class)), 'eq d ep v cc')]/div/a/@href").first.value
-      duration_text = card.xpath(".//div[contains(concat(' ',normalize-space(@class)), 'dw s dx')]").first.text
+      article_name = card.search('.ai.y.ce.at.cf.au.di.ex.ey.ak.an.dk.ck.cl.am').first.children.first.children.text unless card.search('.ai.y.ce.at.cf.au.di.ex.ey.ak.an.dk.ck.cl.am').empty?
+      article_link = card.xpath(".//div[contains(concat(' ',normalize-space(@class)), 'ew d ev v cc')]/div/a/@href").first.value
+      duration_text = card.xpath(".//div[contains(concat(' ',normalize-space(@class)), 'ec s ed')]").first.text
       article_duration = duration_text.gsub(/(\D+\s)(\d+.)(\d+)(.*)/, '\3').to_i
     Inspiration.create(
       inspiration_type: 'article',
