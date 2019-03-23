@@ -40,15 +40,26 @@ class ItinerariesController < ApplicationController
     # Récupérer toutes les inspirations qui durent same duration
     eligible_inspirations = Inspiration.all.select {|inspiration|
       inspiration.duration < @itinerary.duration  &&
-      inspiration.duration > @itinerary.duration / 2
+      inspiration.duration > @itinerary.duration * 0.75
     }
     # N'en prendre que 4 et les passer à la vue
-    if eligible_inspirations.count < 4
+    if eligible_inspirations.count < 8
       elected_inspirations = eligible_inspirations
     else
-      elected_inspirations = eligible_inspirations.sample(4)
+      elected_inspirations = eligible_inspirations.sample(8)
     end
-    @suggestions = elected_inspirations.map{|elected_inspiration|
+    suggestions = create_suggestions_from_inspirations(elected_inspirations)
+
+    @article_suggestions = suggestions.select{|suggestion| suggestion.inspiration.inspiration_type == 'article'}
+    @video_suggestions = suggestions.select{|suggestion| suggestion.inspiration.inspiration_type == 'video'}
+    @podcast_suggestions = suggestions.select{|suggestion| suggestion.inspiration.inspiration_type == 'podcast'}
+
+  end
+
+  private
+
+  def create_suggestions_from_inspirations(inspirations_array)
+    inspirations_array.map{|elected_inspiration|
       if current_user.already_suggested_inspirations.include?(elected_inspiration)
         all_itineraries_for_current_user = Itinerary.where(user: current_user)
         Suggestion.where(
@@ -65,9 +76,9 @@ class ItinerariesController < ApplicationController
       end
     }
 
+
   end
 
-  private
 
   def build_google_maps_url(itinerary)
     api_key = ENV['MAPS_API_KEY']
