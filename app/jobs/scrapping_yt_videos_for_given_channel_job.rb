@@ -12,7 +12,7 @@ class ScrappingYtVideosForGivenChannelJob < ApplicationJob
         name: video.title.gsub(/(.*)( \[EN DIRECT\])/, '\1').to_s,
         # PB avec caractères spéciaux
         duration: video.duration / 60,
-        source: 'Youtube: ThinkerView',
+        source: "Youtube: #{channel.title}",
         inspiration_type: 'video'
       )
     end
