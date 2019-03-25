@@ -41,6 +41,6 @@ class ScrapeMediumFeaturedStoriesJob < ApplicationJob
 
   end
 
-  # it's not getting all articles ??
+
 
 end
