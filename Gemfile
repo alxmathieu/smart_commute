@@ -16,7 +16,7 @@ gem 'watir'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
-gem 'font-awesome-sass', '~> 5.6.1'
+gem 'font-awesome-sass', '~> 5.8.1'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
