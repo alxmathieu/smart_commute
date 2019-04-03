@@ -1,0 +1,18 @@
+<% icon_sizes = Rails.configuration.serviceworker.icon_sizes %>
+{
+  "name": "Smart Commute",
+  "short_name": "Smart Commute",
+  "start_url": "/itineraries/new",
+  "icons": [
+  <% icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
+    {
+      "src": "<%= image_path "logo_SC_2.png" %>",
+      "sizes": "<%= dim %>",
+      "type": "image/png"
+    }<%= i == (icon_sizes.length - 1) ? '' : ',' %>
+  <% end %>
+  ],
+  "background_color": "#09131b",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}
