@@ -22,7 +22,11 @@
         <%= image_tag "duration_white.svg", class:"icon-itinerary icon-duration-small" %>
         <%= f.input :duration, wrapper: false, placeholder: "How long do you have?", class:"input"%>
       </div>
+
+      <%= f.input :wanted_inspiration_type, collection:@inspiration_type %>
+
     </div>
+
     <div>
       <%= f.button :submit, "Show me magic!", class:"btn btn-success" %>
     </div>
