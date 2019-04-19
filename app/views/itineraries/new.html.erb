@@ -23,12 +23,14 @@
         <%= f.input :duration, wrapper: false, placeholder: "How long do you have?", class:"input"%>
       </div>
 
-      <%= f.input :wanted_inspiration_type, collection:@inspiration_type %>
-
+      <%#= f.input :wanted_inspiration_type, as: :radio_buttons, collection:@inspiration_type %>
+      <div class="inspiration_choice">
+        <%= f.collection_radio_buttons :wanted_inspiration_type, [["all", 'All'] ,["video", 'Video'],["podcast", 'Podcast'],["article", 'Article']], :first, :last, checked: "all" %>
+      </div>
     </div>
 
     <div>
-      <%= f.button :submit, "Show me magic!", class:"btn btn-success" %>
+      <%= f.button :submit, "Show me magic!", class:"btn btn-warning" %>
     </div>
   <% end %>
 </div>
