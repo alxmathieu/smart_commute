@@ -22,6 +22,7 @@ color: $light-gray;
   display: flex;
   flex-direction: column;
   align-items:center;
+  margin-bottom: 100px;
 }
 
 .itinerary-form-input{
@@ -35,12 +36,46 @@ color: $light-gray;
   font-weight: bolder;
 }
 
+input[type="radio"] {
+  display:none;
+}
+
+.collection_radio_buttons{
+  border-radius: 10px;
+  padding:10px;
+  margin-top:10px;
+  display:block;
+  position:relative;
+  text-align: center;
+}
+
+.collection_radio_buttons:hover {
+  cursor:pointer;
+  background-color:$green;
+
+}
+
+input[type="radio"]:checked + label {
+  background-color: $green;
+}
+
+.inspiration_choice{
+  display: flex;
+  justify-content: space-evenly;
+}
 
 
 @media screen and (max-width: 1000px) {
 
 .itinerary-form-input{
   width: 500px;
+}
+
+.inspiration_choice{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 50px 30px;
 }
 
 
@@ -52,5 +87,14 @@ color: $light-gray;
   width: 350px;
 }
 
+
+.collection_radio_buttons{
+  //border: solid 1px $green;
+  border-radius: 10px;
+  padding:5px;
+  display:block;
+  position:relative;
+  text-align: center;
+}
 
 }

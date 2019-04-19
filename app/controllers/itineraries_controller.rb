@@ -5,6 +5,7 @@ class ItinerariesController < ApplicationController
 
   def new
     @itinerary = Itinerary.new
+    @inspiration_type = Inspiration.pluck(:inspiration_type).unshift("all").uniq!
   end
 
   def create
@@ -40,7 +41,14 @@ class ItinerariesController < ApplicationController
     # Récupérer toutes les inspirations qui durent same duration
     eligible_inspirations = Inspiration.all.select {|inspiration|
       inspiration.duration < @itinerary.duration  &&
-      inspiration.duration > @itinerary.duration * 0.75
+      inspiration.duration > @itinerary.duration * 0.75 &&
+      if @itinerary.wanted_inspiration_type != "all"
+        inspiration.inspiration_type == @itinerary.wanted_inspiration_type
+        # @itinerary.wanted_inspiration_type renvoie toujours nil. On n'arrive pas à set le field dans le simple form ??
+      else
+        true
+      end
+
     }
     # N'en prendre que 4 et les passer à la vue
     if eligible_inspirations.count < 8
@@ -75,10 +83,7 @@ class ItinerariesController < ApplicationController
           )
       end
     }
-
-
   end
-
 
   def build_google_maps_url(itinerary)
     api_key = ENV['MAPS_API_KEY']
@@ -106,10 +111,8 @@ class ItinerariesController < ApplicationController
     itinerary.save
   end
 
-
-
   def itinerary_params
-    params.require(:itinerary).permit(:user_id, :start_point, :end_point, :duration)
+    params.require(:itinerary).permit(:user_id, :start_point, :end_point, :duration, :wanted_inspiration_type)
   end
 
 end

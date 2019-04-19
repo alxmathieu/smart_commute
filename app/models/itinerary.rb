@@ -5,7 +5,6 @@ class Itinerary < ApplicationRecord
 
   validates :duration , presence: true
 
-
   def duration_in_minutes
     self.duration / 60
   end
