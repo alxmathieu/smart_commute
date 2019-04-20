@@ -18,9 +18,9 @@
 
       <h2 class="or-liaison">OR</h2>
 
-      <div class="itinerary-form-input duration">
-        <%= image_tag "duration_white.svg", class:"icon-itinerary icon-duration-small" %>
-        <%= f.input :duration, wrapper: false, placeholder: "How long do you have?", class:"input"%>
+      <div class="itinerary-form-input end-point">
+        <%= image_tag "duration_white.svg", class:"icon-itinerary-small" %>
+        <%= f.input :duration,label: 'Period', wrapper: false, placeholder: "How long do you have?", class:"input"%>
       </div>
 
       <%#= f.input :wanted_inspiration_type, as: :radio_buttons, collection:@inspiration_type %>
@@ -30,7 +30,7 @@
     </div>
 
     <div>
-      <%= f.button :submit, "Show me magic!", class:"btn btn-warning" %>
+      <%= f.button :submit, "Show me magic!", class:"btn-warning btn-submit" %>
     </div>
   <% end %>
 </div>
