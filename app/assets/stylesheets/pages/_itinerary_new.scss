@@ -59,6 +59,7 @@ input[type="radio"]:checked + label {
 .inspiration_choice{
   display: flex;
   justify-content: space-evenly;
+
 }
 
 .btn-submit{
@@ -66,6 +67,14 @@ min-width: 350px;
 font-weight: bolder;
 }
 
+.collection_radio_buttons{
+  //border: solid 1px $green;
+  border-radius: 10px;
+  padding: 10px 25px;
+  display:block;
+  position:relative;
+  text-align: center;
+}
 
 @media screen and (max-width: 1000px) {
 
@@ -77,7 +86,7 @@ font-weight: bolder;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 50px 30px;
+  margin: 12.5px 50px 20px;
 }
 
 
