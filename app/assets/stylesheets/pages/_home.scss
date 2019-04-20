@@ -13,11 +13,6 @@
   background-size: cover;
 }
 
-.home-content{
-  display: flex;
-  flex-direction: column;
-}
-
 .home-tips{
   //display: flex;
   justify-content: space-between;
@@ -32,10 +27,6 @@ img{
   margin:0px;
 }
 
-.icon-home{
-  width: 350px;
-  align-items: center;
-}
 
 .tip-home{
   text-align: center;
@@ -48,3 +39,70 @@ justify-content: center;
 .commute{
   margin-left: 50px;
 }
+
+.home-title{
+  text-align: center;
+}
+
+.home-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-tips{
+  justify-content: space-between;
+  margin: 60px;
+  padding: 50px;
+  background-color: $yellow;
+  color: $navy-blue;
+  border-radius: 10px;
+}
+
+.card-home{
+  text-align: center;
+}
+
+.tip-home{
+  h3{
+    font-weight: bolder;
+    color: $navy-blue;
+    margin: 50px 0 0 0;
+  }
+}
+
+.icon-home{
+  padding: 0 50px;
+
+}
+
+.home-btn{
+  min-width: 27vw;
+  margin-bottom: 300px;
+  padding: 30px;
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .tip-home{
+    h3{
+      margin: 30px 0 70px 0;
+    }
+  }
+
+  .icon-home{
+    padding: 20px 20px 0 20px;
+
+  }
+
+  .home-tips{
+    padding: 15px;
+    margin: 30px;
+  }
+}
+
+
+
+

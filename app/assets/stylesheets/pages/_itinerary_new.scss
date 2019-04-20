@@ -14,9 +14,6 @@ color: $light-gray;
 
 }
 
-.icon-duration-small{
-    max-width: 90px;
-}
 
 #new_itinerary{
   display: flex;
@@ -62,6 +59,11 @@ input[type="radio"]:checked + label {
 .inspiration_choice{
   display: flex;
   justify-content: space-evenly;
+}
+
+.btn-submit{
+min-width: 350px;
+font-weight: bolder;
 }
 
 
