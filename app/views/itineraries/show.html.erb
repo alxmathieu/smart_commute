@@ -4,7 +4,9 @@
     <h1>No <span class='emphasis-title-green'>public transport</span> itinerary found 😵 </h1>
     <h4>Try again by filling the duration of your commute</h4>
   </div>
-    <%= link_to "Back", new_itinerary_url %>
+  <div class="btn-back">
+    <%= link_to "Back", new_itinerary_url, class:'btn btn-warning' %>
+  </div>
   <% else %>
     <div class="itinerary-show-title">
       <h1>Make the <span class='emphasis-title-green'>most</span> out of your commute</h1>
