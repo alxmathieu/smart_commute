@@ -93,22 +93,28 @@ class ItinerariesController < ApplicationController
     url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=transit&key=#{api_key}"
   end
 
-  def retrieve_duration_from_url(url)
-    ascii_url = URI.escape(url)
-    data = JSON.parse(open(ascii_url).read)
-    routes = data["routes"].first
-    legs = routes["legs"].first
-    duration = legs["duration"]["text"]
-  end
+  # def retrieve_duration_from_url(url)
+  #   ascii_url = URI.escape(url)
+  #   data = JSON.parse(open(ascii_url).read)
+  #   routes = data["routes"].first
+  #   legs = routes["legs"].first
+  #   duration = legs["duration"]["text"]
+  # end
 
   def set_duration_for_itinerary(itinerary, url)
     ascii_url = URI.escape(url)
     data = JSON.parse(open(ascii_url).read)
-    routes = data["routes"].first
-    legs = routes["legs"].first
-    duration = legs["duration"]["value"]
-    itinerary.duration = duration / 60
-    itinerary.save
+    begin
+      routes = data["routes"].first
+      legs = routes["legs"].first
+      duration = legs["duration"]["value"]
+      itinerary.duration = duration / 60
+      itinerary.save
+    rescue
+      itinerary.duration = 0
+      itinerary.save
+    end
+
   end
 
   def itinerary_params
