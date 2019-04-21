@@ -1,4 +1,5 @@
 class SuggestionsController < ApplicationController
+  skip_before_action :authenticate_user!, :only => :update
 
 
   def update

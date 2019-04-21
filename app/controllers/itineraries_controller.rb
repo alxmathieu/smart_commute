@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class ItinerariesController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:new, :create, :show]
 
   def new
     @itinerary = Itinerary.new
@@ -68,7 +69,13 @@ class ItinerariesController < ApplicationController
 
   def create_suggestions_from_inspirations(inspirations_array)
     inspirations_array.map{|elected_inspiration|
-      if current_user.already_suggested_inspirations.include?(elected_inspiration)
+      if current_user.nil?
+        Suggestion.create(
+          inspiration: elected_inspiration,
+          itinerary: @itinerary,
+          status: 'suggested'
+          )
+      elsif current_user.already_suggested_inspirations.include?(elected_inspiration)
         all_itineraries_for_current_user = Itinerary.where(user: current_user)
         Suggestion.where(
           inspiration: elected_inspiration,
