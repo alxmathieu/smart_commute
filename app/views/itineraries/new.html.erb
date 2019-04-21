@@ -5,7 +5,7 @@
   </div>
 
   <%= simple_form_for @itinerary do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :user_id, value: current_user.id unless current_user.nil? %>
     <div>
       <div class="itinerary-form-input start-point">
         <%= image_tag "location_here.svg", class:"icon-itinerary-small" %>
