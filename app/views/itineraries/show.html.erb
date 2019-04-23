@@ -1,6 +1,6 @@
 <div class="container">
   <% if @itinerary.duration == 0 %>
-  <div class="itinerary-show-title">
+  <div class="title-center">
     <h1>No <span class='emphasis-title-green'>public transport</span> itinerary found 😵 </h1>
     <h4>Try again by filling the duration of your commute</h4>
   </div>
@@ -8,7 +8,7 @@
     <%= link_to "Back", new_itinerary_url, class:'btn btn-warning' %>
   </div>
   <% else %>
-    <div class="itinerary-show-title">
+    <div class="title-center">
       <h1>Make the <span class='emphasis-title-green'>most</span> out of your commute</h1>
     </div>
     <div class="itinerary-sumup">
@@ -38,7 +38,7 @@
         <% unless @article_suggestions.empty? %>
           <h2 class=''>Articles</h2>
           <div class="row">
-            <% @article_suggestions.each_with_index do |suggestion, index| %>
+            <% @article_suggestions.each do |suggestion| %>
                 <div class="col-xs-12 col-sm-3" >
                 <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
                     <div class="card-suggestion">
@@ -57,7 +57,7 @@
         <% unless @podcast_suggestions.empty? %>
           <h2 class=''>Podcast</h2>
           <div class="row">
-            <% @podcast_suggestions.each_with_index do |suggestion, index| %>
+            <% @podcast_suggestions.each do |suggestion| %>
               <div class="col-xs-12 col-sm-3" >
               <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
 
@@ -79,7 +79,7 @@
         <% unless @video_suggestions.empty? %>
           <h2 class=''>Videos</h2>
           <div class="row">
-            <% @video_suggestions.each_with_index do |suggestion, index| %>
+            <% @video_suggestions.each do |suggestion| %>
                 <div class="col-xs-12 col-sm-3" >
                 <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
 
