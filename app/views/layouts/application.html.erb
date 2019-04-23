@@ -12,9 +12,9 @@
   <link rel="manifest" href="/manifest.json" />
 <meta name="apple-mobile-web-app-capable" content="yes"></head>
   <body>
-    <% unless controller_name == "pages" %>
-      <%= render 'shared/navbar' %>
-    <% end %>
+    <%# unless controller_name == "pages" %>
+    <%= render 'shared/navbar' %>
+    <%# end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
