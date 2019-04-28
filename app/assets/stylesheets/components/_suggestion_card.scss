@@ -1,14 +1,30 @@
-.orange-add-watchlist{
+.yellow-add-watchlist{
   color: $yellow;
   position: absolute;
   top: 10px ;
   right: 10px;
 }
 
+.orange-remove-watchlist{
+  color: $red;
+  position: absolute;
+  top: 10px ;
+  right: 10px;
+}
+
+
 @media screen and (max-width: 1000px) {
 
-  .orange-add-watchlist{
+  .yellow-add-watchlist{
     color: $yellow;
+    position: absolute;
+    top: 20px ;
+    right: 20px;
+    font-size: 20px;
+  }
+
+  .orange-remove-watchlist{
+    color: $orange;
     position: absolute;
     top: 20px ;
     right: 20px;

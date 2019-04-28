@@ -1,8 +1,17 @@
-<div class="col-xs-12 col-sm-3" >
-  <%= link_to suggestion_watchlist_path(suggestion), remote: true do  %>
-    <i class="fas fa-plus orange-add-watchlist"></i>
+<div class="col-xs-12 col-sm-3" id="suggestion-card-<%= suggestion.id %>" >
+  <% if suggestion.status == 'watchlist' %>
+    <%= link_to suggestion_watchlist_path(suggestion), remote: true do  %>
+      <i class="fas fa-check orange-remove-watchlist "></i>
+    <% end %>
+  <% else %>
+    <%= link_to suggestion_watchlist_path(suggestion), remote: true do  %>
+      <i class="fas fa-plus yellow-add-watchlist"></i>
+    <% end %>
   <% end %>
-<%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
+
+
+
+  <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
     <div class="card-suggestion">
       <%= suggestion.inspiration.name %> <br>
       <span class="duration"><%= suggestion.inspiration.duration %> min</span>
@@ -10,7 +19,6 @@
     </div>
   <% end %>
 </div>
-
 
 
 
