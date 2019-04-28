@@ -1,0 +1,9 @@
+<div class="col-xs-12 col-sm-3" >
+<%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
+    <div class="card-suggestion">
+      <%= suggestion.inspiration.name %> <br>
+      <span class="duration"><%= suggestion.inspiration.duration %> min</span>
+      <span class="source">From <%= suggestion.inspiration.source %></span>
+    </div>
+  <% end %>
+</div>

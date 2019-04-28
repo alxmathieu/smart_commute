@@ -4,15 +4,7 @@
   <h2><span class="emphasis-subtitle-red">Watchlist</span> (<%= @watchlist.count%>)</h2>
   <div class="row">
     <% @watchlist.each do |suggestion| %>
-        <div class="col-xs-12 col-sm-3" >
-        <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
-            <div class="card-suggestion">
-              <%= suggestion.inspiration.name %> <br>
-              <span class="duration"><%= suggestion.inspiration.duration %> min</span>
-              <span class="source">From <%= suggestion.inspiration.source %></span>
-            </div>
-          <% end %>
-        </div>
+      <%= render 'shared/suggestion_card', suggestion: suggestion %>
     <% end %>
   </div>
 
@@ -21,15 +13,7 @@
   <h2><span class="emphasis-subtitle-red">Seen</span> (<%= @seen_suggestions.count%>)</h2>
   <div class="row">
     <% @seen_suggestions.each do |suggestion| %>
-        <div class="col-xs-12 col-sm-3" >
-        <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
-            <div class="card-suggestion">
-              <%= suggestion.inspiration.name %> <br>
-              <span class="duration"><%= suggestion.inspiration.duration %> min</span>
-              <span class="source">From <%= suggestion.inspiration.source %></span>
-            </div>
-          <% end %>
-        </div>
+      <%= render 'shared/suggestion_card', suggestion: suggestion %>
     <% end %>
   </div>
 

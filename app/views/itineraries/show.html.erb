@@ -39,15 +39,7 @@
           <h2 class=''>Articles</h2>
           <div class="row">
             <% @article_suggestions.each do |suggestion| %>
-                <div class="col-xs-12 col-sm-3" >
-                <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
-                    <div class="card-suggestion">
-                      <%= suggestion.inspiration.name %> <br>
-                      <span class="duration"><%= suggestion.inspiration.duration %> min</span>
-                      <span class="source">From <%= suggestion.inspiration.source %></span>
-                    </div>
-                  <% end %>
-                </div>
+                <%= render 'shared/suggestion_card', suggestion: suggestion %>
             <% end %>
           </div>
         <% end %>
@@ -58,18 +50,7 @@
           <h2 class=''>Podcast</h2>
           <div class="row">
             <% @podcast_suggestions.each do |suggestion| %>
-              <div class="col-xs-12 col-sm-3" >
-              <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
-
-                <%#= link_to suggestion.inspiration.url, target: "_blank" do %>
-                  <div class="card-suggestion">
-                    +
-                    <%= suggestion.inspiration.name %> <br>
-                    <span class="duration"><%= suggestion.inspiration.duration %> min</span>
-                    <span class="source">From <%= suggestion.inspiration.source %></span>
-                  </div>
-                <% end %>
-              </div>
+              <%= render 'shared/suggestion_card', suggestion: suggestion %>
             <% end %>
           </div>
         <% end %>
@@ -81,17 +62,7 @@
           <h2 class=''>Videos</h2>
           <div class="row">
             <% @video_suggestions.each do |suggestion| %>
-                <div class="col-xs-12 col-sm-3" >
-                <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
-
-                  <%#= link_to suggestion.inspiration.url, target: "_blank" do %>
-                    <div class="card-suggestion">
-                      <%= suggestion.inspiration.name %> <br>
-                      <span class="duration"><%= suggestion.inspiration.duration %> min</span>
-                      <span class="source">From <%= suggestion.inspiration.source %></span>
-                    </div>
-                  <% end %>
-                </div>
+                <%= render 'shared/suggestion_card', suggestion: suggestion %>
             <% end %>
           </div>
         <% end %>
