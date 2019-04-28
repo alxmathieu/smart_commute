@@ -1,14 +1,12 @@
 <div class="container">
   <h1 class="title-center"><span class="emphasis-title-green">Your Profile</span></h1>
 
-  <h2><span class="emphasis-subtitle-red">Watchlist</span> (<%= @watchlist.count%>)</h2>
+  <h2><span class="emphasis-subtitle-yellow">Watchlist</span> (<%= @watchlist.count%>)</h2>
   <div class="row">
     <% @watchlist.each do |suggestion| %>
       <%= render 'shared/suggestion_card', suggestion: suggestion %>
     <% end %>
   </div>
-
-
 
   <h2><span class="emphasis-subtitle-red">Seen</span> (<%= @seen_suggestions.count%>)</h2>
   <div class="row">
@@ -18,3 +16,4 @@
   </div>
 
 </div>
+

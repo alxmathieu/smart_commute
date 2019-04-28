@@ -9,9 +9,16 @@ class SuggestionsController < ApplicationController
 
     respond_to do |format|
       format.html {redirect_to suggestion.inspiration.url}
-      format.json { head :no_content}
+      format.json {redirect_to suggestion.inspiration.url}
     end
   end
+
+  def add_to_watchlist
+    suggestion = Suggestion.find(params[:id])
+    suggestion.status = "watchlist"
+    suggestion.save!
+  end
+
 
 private
 
