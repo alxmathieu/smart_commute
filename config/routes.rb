@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :suggestions
-  match 'suggestions/:id/add_to_watchlist' => 'suggestions#add_to_watchlist', as: :suggestion_watchlist, via: [:get, :post]
+  match 'suggestions/:id/add_to_watchlist' => 'suggestions#add_to_watchlist', as: :suggestion_add_watchlist, via: [:get, :post]
+  match 'suggestions/:id/remove_from_watchlist' => 'suggestions#remove_from_watchlist', as: :suggestion_remove_watchlist, via: [:get, :post]
   resources :itineraries # à retravailler pour n'avoir que les routes nécessaires
   devise_for :users
   root to: 'pages#home'
