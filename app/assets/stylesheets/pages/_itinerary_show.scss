@@ -27,6 +27,7 @@
 }
 
 .card-suggestion{
+  font-weight: bold;
   position: relative;
   min-height: 250px;
   display: flex;
@@ -56,6 +57,9 @@
     text-align: center;
     margin-top: 10px;
     font-style: italic;
+  }
+  .name{
+    text-align: center;
   }
 }
 
