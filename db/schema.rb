@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_210244) do
+ActiveRecord::Schema.define(version: 2019_05_01_202807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_210244) do
     t.bigint "inspiration_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "watchlisted", default: false
     t.index ["inspiration_id"], name: "index_suggestions_on_inspiration_id"
     t.index ["itinerary_id"], name: "index_suggestions_on_itinerary_id"
   end

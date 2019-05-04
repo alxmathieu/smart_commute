@@ -1,0 +1,6 @@
+function watchlist(innerHTML) {
+  const watchlist = document.getElementById('watchlist-suggestion-<%= @suggestion.id %>')
+  watchlist.innerHTML = innerHTML;
+}
+
+watchlist("<%= j render 'shared/watchlist_btn', suggestion: @suggestion %>");

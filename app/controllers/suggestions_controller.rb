@@ -9,14 +9,49 @@ class SuggestionsController < ApplicationController
 
     respond_to do |format|
       format.html {redirect_to suggestion.inspiration.url}
-      format.json { head :no_content}
+      format.json {redirect_to suggestion.inspiration.url}
     end
   end
+
+  def add_to_watchlist
+    @suggestion = Suggestion.find(params[:id])
+    @suggestion.watchlisted = true
+    #suggestion.update(watchlisted: true)
+    if @suggestion.save
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js  # <-- will render `app/views/reviews/add_to_watchlist.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render 'root' }
+        format.js  # <-- idem
+      end
+    end
+  end
+
+  def remove_from_watchlist
+    @suggestion = Suggestion.find(params[:id])
+    @suggestion.watchlisted = false
+    #suggestion.update(watchlisted: true)
+    if @suggestion.save
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js  # <-- will render `app/views/reviews/add_to_watchlist.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render 'root' }
+        format.js  # <-- idem
+      end
+    end
+  end
+
 
 private
 
   def itinerary_params
-    params.require(:suggestion).permit(:itinerary_id, :inspiration_id, :user_id, :status)
+    params.require(:suggestion).permit(:itinerary_id, :inspiration_id, :user_id, :status, :watchlisted)
   end
 
 

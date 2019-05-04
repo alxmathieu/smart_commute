@@ -1,0 +1,16 @@
+<% if user_signed_in?  %>
+  <% if suggestion.watchlisted %>
+    <%= link_to suggestion_remove_watchlist_path(suggestion), remote: true do  %>
+      <i class="fas fa-check green-remove-watchlist "></i>
+    <% end %>
+  <% else %>
+    <%= link_to suggestion_add_watchlist_path(suggestion), remote: true do  %>
+      <i class="fas fa-plus yellow-add-watchlist"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <%#= link_to new_user_session_path do %>
+  <%= link_to "#watchlist_disconnected", "data-toggle" => "modal" do %>
+    <i class="fas fa-check green-remove-watchlist "></i>
+  <% end %>
+<% end %>
