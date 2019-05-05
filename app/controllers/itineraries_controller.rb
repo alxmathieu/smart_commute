@@ -49,7 +49,6 @@ class ItinerariesController < ApplicationController
       else
         true
       end
-
     }
     # N'en prendre que 4 et les passer à la vue
     if eligible_inspirations.count < 8
@@ -57,7 +56,9 @@ class ItinerariesController < ApplicationController
     else
       elected_inspirations = eligible_inspirations.sample(8)
     end
+
     suggestions = create_suggestions_from_inspirations(elected_inspirations)
+    suggestions.reject!{|suggestion| suggestion.nil?}
 
     @article_suggestions = suggestions.select{|suggestion| suggestion.inspiration.inspiration_type == 'article'}
     @video_suggestions = suggestions.select{|suggestion| suggestion.inspiration.inspiration_type == 'video'}
@@ -70,11 +71,15 @@ class ItinerariesController < ApplicationController
   def create_suggestions_from_inspirations(inspirations_array)
     inspirations_array.map{|elected_inspiration|
       if current_user.nil?
-        Suggestion.create(
-          inspiration: elected_inspiration,
-          itinerary: @itinerary,
-          status: 'suggested'
-          )
+        if Suggestion.where(inspiration: elected_inspiration, itinerary: @itinerary).empty?
+          Suggestion.create(
+            inspiration: elected_inspiration,
+            itinerary: @itinerary,
+            status: 'suggested'
+            )
+        else
+          Suggestion.where(inspiration: elected_inspiration, itinerary: @itinerary).first
+        end
       elsif current_user.already_suggested_inspirations.include?(elected_inspiration)
         all_itineraries_for_current_user = Itinerary.where(user: current_user)
         Suggestion.where(
