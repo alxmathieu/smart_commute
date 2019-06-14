@@ -7,6 +7,13 @@
   <%= simple_form_for @itinerary do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id unless current_user.nil? %>
     <div>
+      <div class="itinerary-form-input end-point">
+        <%= image_tag "duration_white.svg", class:"icon-itinerary-small" %>
+        <%= f.input :duration,label: 'Period', wrapper: false, placeholder: "How long do you have?", class:"input"%>
+      </div>
+
+      <h2 class="or-liaison">OR</h2>
+
       <div class="itinerary-form-input start-point">
         <%= image_tag "location_here.svg", class:"icon-itinerary-small" %>
         <%= f.input :start_point, wrapper: false, placeholder: "Where do you start?", class:"input"%>
@@ -15,14 +22,6 @@
         <%= image_tag "destination.svg", class:"icon-itinerary-small" %>
         <%= f.input :end_point, wrapper: false, placeholder: "Where are you going?", class:"input"%>
       </div>
-
-      <h2 class="or-liaison">OR</h2>
-
-      <div class="itinerary-form-input end-point">
-        <%= image_tag "duration_white.svg", class:"icon-itinerary-small" %>
-        <%= f.input :duration,label: 'Period', wrapper: false, placeholder: "How long do you have?", class:"input"%>
-      </div>
-
       <%#= f.input :wanted_inspiration_type, as: :radio_buttons, collection:@inspiration_type %>
       <div class="inspiration_choice">
         <%= f.collection_radio_buttons :wanted_inspiration_type, [["all", 'All'] ,["video", 'Video'],["podcast", 'Podcast'],["article", 'Article']], :first, :last, checked: "all" %>

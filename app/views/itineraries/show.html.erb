@@ -37,7 +37,7 @@
     <div class="suggestions">
       <div class="suggestions-results ">
         <% unless @article_suggestions.empty? %>
-          <h2 class=''>Articles</h2>
+          <h2>Articles</h2>
           <div class="row">
             <% @article_suggestions.each do |suggestion| %>
                 <%= render 'shared/suggestion_card', suggestion: suggestion %>
@@ -48,7 +48,7 @@
 
       <div class="suggestions-results ">
         <% unless @podcast_suggestions.empty? %>
-          <h2 class=''>Podcast</h2>
+          <h2>Podcast</h2>
           <div class="row">
             <% @podcast_suggestions.each do |suggestion| %>
               <%= render 'shared/suggestion_card', suggestion: suggestion %>
@@ -58,7 +58,7 @@
       </div>
       <div class="suggestions-results ">
         <% unless @video_suggestions.empty? %>
-          <h2 class=''>Videos</h2>
+          <h2>Videos</h2>
           <div class="row">
             <% @video_suggestions.each do |suggestion| %>
                 <%= render 'shared/suggestion_card', suggestion: suggestion %>

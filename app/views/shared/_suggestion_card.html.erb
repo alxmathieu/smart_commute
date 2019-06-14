@@ -1,7 +1,6 @@
 <div class="col-xs-12 col-sm-3"  >
-  <%#= render 'suggestions/watchlist_button', suggestion: suggestion %>
-
   <%= link_to suggestion_path(suggestion), :method => :put, :target => '_blank' do %>
+  <%#= render 'suggestions/watchlist_button', suggestion: suggestion %>
     <div class="card-suggestion">
       <div id="watchlist-suggestion-<%= suggestion.id %>">
         <%= render 'shared/watchlist_btn', suggestion: suggestion%>
