@@ -1,4 +1,4 @@
-<% if user_signed_in?  %>
+<% if user_signed_in? %>
   <% if suggestion.watchlisted %>
     <%= link_to suggestion_remove_watchlist_path(suggestion), remote: true do  %>
       <i class="fas fa-check green-remove-watchlist "></i>
