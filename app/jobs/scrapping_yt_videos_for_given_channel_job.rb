@@ -19,4 +19,6 @@ class ScrappingYtVideosForGivenChannelJob < ApplicationJob
   end
 
 # thinkerview: UCQgWpmt02UtJkyO32HGUASQ
+# kurzggesagt: UCsXVk37bltHxD1rDPwtNM8Q
+# arte: UCwI-JbGNsojunnHbFAc0M4Q
 end
