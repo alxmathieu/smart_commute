@@ -10,7 +10,7 @@ class ScrapeTedJob < ApplicationJob
 
   def create_ted_inspirations
     duration = ['0-6', '6-12', '12-18', "18%2B"]
-    pages = [1, 2, 3, 4, 5, 6]
+    pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     duration.each do |interval|
       pages.each do |page|
         ted_url = "https://www.ted.com/talks?sort=popular&duration=#{interval}&page=#{page}"
