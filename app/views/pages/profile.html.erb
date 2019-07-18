@@ -1,5 +1,13 @@
 <div class="container">
   <h1 class="title-center"><span class="emphasis-title-green">Your Profile</span></h1>
+  <h2>Your preferences</h2>
+
+
+    <%= simple_form_for @languageuserjoint do |f| %>
+      <%= f.input :language_id, as: :check_boxes, collection: [[ 'English',Language.first.id], ['French', Language.second.id]] %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    <% end %>
+
 
   <h2><span class="emphasis-subtitle-yellow">Watchlist</span> (<%= @watchlist.count%>)</h2>
   <div class="row">

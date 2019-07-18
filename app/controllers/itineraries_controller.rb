@@ -6,7 +6,7 @@ class ItinerariesController < ApplicationController
 
   def new
     @itinerary = Itinerary.new
-    @inspiration_type = Inspiration.pluck(:inspiration_type).unshift("all").uniq!
+    #@inspiration_type = Inspiration.pluck(:inspiration_type).unshift("all").uniq!
   end
 
   def create

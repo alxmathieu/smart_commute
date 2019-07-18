@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :itineraries
   has_many :suggestions, through: :itineraries
-
+  has_many :language_user_joints
+  has_many :languages, through: :language_user_joints
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

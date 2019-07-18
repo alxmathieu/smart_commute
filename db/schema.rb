@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_202900) do
+ActiveRecord::Schema.define(version: 2019_07_18_204825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,21 @@ ActiveRecord::Schema.define(version: 2019_07_17_202900) do
     t.index ["user_id"], name: "index_itineraries_on_user_id"
   end
 
+  create_table "language_user_joints", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_language_user_joints_on_language_id"
+    t.index ["user_id"], name: "index_language_user_joints_on_user_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "suggestions", force: :cascade do |t|
     t.string "status"
     t.bigint "itinerary_id"
@@ -61,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_202900) do
   end
 
   add_foreign_key "itineraries", "users"
+  add_foreign_key "language_user_joints", "languages"
+  add_foreign_key "language_user_joints", "users"
   add_foreign_key "suggestions", "inspirations"
   add_foreign_key "suggestions", "itineraries"
 end
