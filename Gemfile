@@ -6,7 +6,7 @@ gem 'devise'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
-gem 'rails', '5.2.2.1'
+gem 'rails', '5.2.4.2'
 gem 'redis'
 gem 'forest_liana' # for admin panel in forest admin
 gem "geocoder"
