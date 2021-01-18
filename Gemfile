@@ -11,7 +11,7 @@ gem 'redis'
 gem 'forest_liana' # for admin panel in forest admin
 gem "geocoder"
 gem 'watir'
-gem 'yt', '~> 0.29.1'
+gem 'yt', '~> 0.33.4'
 gem "serviceworker-rails"
 
 
