@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  allow:
+  - dependency-type: direct
+  - dependency-type: indirect
+  ignore:
+  - dependency-name: bootsnap
+    versions:
+    - 1.6.0
+    - 1.7.0
+    - 1.7.1
+    - 1.7.2
+    - 1.7.3
+  - dependency-name: mime-types-data
+    versions:
+    - 3.2020.1104
+    - 3.2021.0212
+  - dependency-name: rails
+    versions:
+    - 5.2.4.4
+    - 5.2.4.5
+  - dependency-name: loofah
+    versions:
+    - 2.9.0
